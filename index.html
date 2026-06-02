@@ -303,9 +303,9 @@
 
     <div class="modal-overlay" id="aboutModal" onclick="toggleAbout()">
         <div class="glass-panel" style="padding: 3rem; max-width: 500px; text-align: center;" onclick="event.stopPropagation()">
-            <h2 style="margin-bottom: 20px;">Nextrio Protocol</h2>
-            <p style="line-height:1.7; color: var(--text-dim); font-size: 0.95rem;">NexTrio Task is a high-fidelity compliance architecture. We utilize advanced heuristics to decompose regulatory requirements into verifiable operational steps, ensuring total transparency for fintech stakeholders.</p>
-            <button class="action-btn" style="margin-top:30px; width: 100%;" onclick="toggleAbout()">Exit Protocol</button>
+            <h2 style="margin-bottom: 20px;">About NexTrio</h2>
+            <p style="line-height:1.7; color: var(--text-dim); font-size: 0.95rem;">NexTrio Task is a simple planner made for students. Use it to keep track of study tasks, set goals, and save ideas in one place.</p>
+            <button class="action-btn" style="margin-top:30px; width: 100%;" onclick="toggleAbout()">Close</button>
         </div>
     </div>
 
@@ -316,10 +316,10 @@
         let activeProjectID = null;
 
         const motivations = [
-            "Vault empty. Awaiting compliance data. ✨",
-            "Security systems ready for new project initialization. 🚀",
-            "Compliance is the foundation of innovation. Let's build. 💡",
-            "Data synchronization optimizes institutional trust. 🌟"
+            "Your planner is ready for your next big idea. ✨",
+            "A fresh study or personal plan is just one click away. 🚀",
+            "Small steps make big goals feel possible. Let's build your plan. 💡",
+            "Save your ideas and keep moving with confidence. 🌟"
         ];
 
         /* --- Cookie & Storage Logic --- */
@@ -389,18 +389,18 @@
         function handleAuth() {
             const u = document.getElementById('userIn').value.trim().toLowerCase();
             const p = document.getElementById('passIn').value;
-            if(!u || !p) return alert("Security access denied: Missing credentials.");
+            if(!u || !p) return alert("Please enter your name and password.");
             const key = `nt_user_${u}`;
 
             if(authMode === 'signup') {
-                if(localStorage.getItem(key)) return alert("Identity conflict: Organization already registered.");
+                if(localStorage.getItem(key)) return alert("This name is already taken. Try logging in.");
                 const user = { name: u, pass: p, pic: chosenAvatar, gallery: [] };
                 localStorage.setItem(key, JSON.stringify(user));
                 sessionStorage.setItem('nt_active', key);
                 launch(user);
             } else {
                 const user = JSON.parse(localStorage.getItem(key));
-                if(!user || user.pass !== p) return alert("Authorization failure.");
+                if(!user || user.pass !== p) return alert("Name or password is incorrect.");
                 sessionStorage.setItem('nt_active', key);
                 launch(user);
             }
@@ -440,7 +440,7 @@
             document.getElementById('progressArea').style.display = 'block';
             const list = document.getElementById('taskList');
             list.innerHTML = "";
-            const steps = ["Identity Verification (KYC)", "Anti-Money Laundering Check", "Risk Assessment Protocol", "Regulatory Alignment", "Stakeholder Disclosure", "Final Vault Sync"];
+            const steps = ["Break the task into small steps", "Gather your notes", "Pick a time to study", "Take short breaks", "Review what you learned", "Save your plan"];
             steps.forEach((s, i) => {
                 const checked = loadedSteps ? loadedSteps[i] : false;
                 list.innerHTML += `<div class="task-card"><input type="checkbox" class="t-check" ${checked?'checked':''} onchange="prog()"> <label style="font-size: 0.9rem;">${s}</label></div>`;
@@ -462,7 +462,7 @@
             const key = sessionStorage.getItem('nt_active');
             if(!key) return;
             const user = JSON.parse(localStorage.getItem(key));
-            const title = document.getElementById('taskInput').value || "Audit Segment_" + Date.now();
+            const title = document.getElementById('taskInput').value || "Plan_" + Date.now();
             const checks = Array.from(document.querySelectorAll('.t-check')).map(c => c.checked);
             
             const projectData = {
@@ -480,7 +480,7 @@
 
             localStorage.setItem(key, JSON.stringify(user));
             activeProjectID = projectData.id;
-            alert("Record Synchronized with Vault.");
+            alert("Saved to My List.");
         }
 
         function renderGallery() {
@@ -491,7 +491,7 @@
                 const randomMsg = motivations[Math.floor(Math.random() * motivations.length)];
                 list.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px;" class="glass-panel">
                     <p style="color: var(--text-dim); margin-bottom: 20px;">${randomMsg}</p>
-                    <button class="action-btn" style="margin: 0 auto;" onclick="showView('app')">Initialize Audit</button>
+                    <button class="action-btn" style="margin: 0 auto;" onclick="showView('app')">Back to Planner</button>
                 </div>`;
                 return;
             }

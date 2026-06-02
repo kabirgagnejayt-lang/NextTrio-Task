@@ -389,18 +389,18 @@
         function handleAuth() {
             const u = document.getElementById('userIn').value.trim().toLowerCase();
             const p = document.getElementById('passIn').value;
-            if(!u || !p) return alert("Security access denied: Missing credentials.");
+            if(!u || !p) return alert("Please enter your name and password.");
             const key = `nt_user_${u}`;
 
             if(authMode === 'signup') {
-                if(localStorage.getItem(key)) return alert("This name is already in use. Try logging in instead.");
+                if(localStorage.getItem(key)) return alert("This name is already taken. Try logging in.");
                 const user = { name: u, pass: p, pic: chosenAvatar, gallery: [] };
                 localStorage.setItem(key, JSON.stringify(user));
                 sessionStorage.setItem('nt_active', key);
                 launch(user);
             } else {
                 const user = JSON.parse(localStorage.getItem(key));
-                if(!user || user.pass !== p) return alert("Authorization failure.");
+                if(!user || user.pass !== p) return alert("Name or password is incorrect.");
                 sessionStorage.setItem('nt_active', key);
                 launch(user);
             }
