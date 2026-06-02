@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexTrio Task | High-End Fintech Compliance</title>
+    <title>NexTrio Task | Student Planner</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -70,7 +70,7 @@
             border-bottom: 1px solid var(--card-border);
         }
         .brand-logo { 
-            height: 40px; width: auto; cursor: pointer; filter: brightness(1.5);
+            height: 56px; width: auto; cursor: pointer; filter: brightness(1.5);
             transition: transform 0.3s ease;
         }
         .brand-logo:hover { transform: scale(1.05); }
@@ -169,16 +169,16 @@
 
     <div id="congratsOverlay">
         <div class="glass-panel" style="padding: 4rem; text-align: center;">
-            <h1 style="color: var(--accent-blue);">Verification Complete</h1>
-            <p style="color: var(--text-dim); margin-bottom: 30px;">All compliance protocols have been successfully synchronized.</p>
-            <button class="action-btn" onclick="closeCongrats()">Return to Console</button>
+            <h1 style="color: var(--accent-blue);">You're All Set</h1>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">You're ready for your next study session or project.</p>
+            <button class="action-btn" onclick="closeCongrats()">Back to Planner</button>
         </div>
     </div>
 
     <div id="authOverlay">
         <div class="glass-panel auth-card">
             <h1 style="margin-bottom: 10px;">NexTrio</h1>
-            <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 0.9rem;">The standard in fintech compliance.</p>
+            <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 0.9rem;">A simple planner for students.</p>
             <div class="auth-tabs">
                 <div id="tabSignup" class="auth-tab active" onclick="switchAuth('signup')">Sign Up</div>
                 <div id="tabLogin" class="auth-tab" onclick="switchAuth('login')">Login</div>
@@ -191,9 +191,9 @@
                     <input type="file" id="authPicUpload" hidden accept="image/*" onchange="handleAuthPic(this)">
                 </div>
             </div>
-            <input type="text" id="userIn" class="auth-input" placeholder="Organization ID / Username">
+            <input type="text" id="userIn" class="auth-input" placeholder="Student name / email">
             <input type="password" id="passIn" class="auth-input" placeholder="Password">
-            <button class="action-btn" style="width:100%; margin-top:15px;" onclick="handleAuth()">Establish Connection</button>
+            <button class="action-btn" style="width:100%; margin-top:15px;" onclick="handleAuth()">Start Using NexTrio</button>
         </div>
     </div>
 
@@ -201,10 +201,10 @@
         <img src="https://i.postimg.cc/cCQ69676/Chat-GPT-Image-May-28-2026-11-45-04-AM-removebg-preview.png" class="brand-logo" onclick="showView('app')">
         <nav>
             <ul>
-                <li><a onclick="showView('gallery')">Registry</a></li>
-                <li><a onclick="showView('game')">Simulation</a></li>
-                <li><a onclick="toggleAbout()">Protocol</a></li>
-                <li><a onclick="showView('contact')">Support</a></li>
+                <li><a onclick="showView('gallery')">My Plans</a></li>
+                <li><a onclick="showView('game')">Fun Mode</a></li>
+                <li><a onclick="toggleAbout()">About</a></li>
+                <li><a onclick="showView('contact')">Contact</a></li>
                 <li onclick="showView('profile')">
                     <div class="profile-trigger">
                         <img id="navPic" class="nav-avatar" src="">
@@ -217,30 +217,30 @@
 
     <main id="appBody">
         <div id="appView" class="view-pane glass-panel" style="display:block;">
-            <p class="eyebrow">Compliance Workspace</p>
-            <h1>Initialize New Audit</h1>
-            <p class="subtle">Plan, organize, and sync your next compliance milestone in a cleaner, faster dashboard.</p>
+            <p class="eyebrow">Student Hub</p>
+            <h1>Plan Your Next Goal</h1>
+            <p class="subtle">Plan and organize study tasks, goals, and simple projects in an easy dashboard.</p>
             <div class="mini-stats">
                 <div class="mini-card"><strong>6</strong> Smart steps</div>
                 <div class="mini-card"><strong>100%</strong> Focus mode</div>
                 <div class="mini-card"><strong>Live</strong> Sync ready</div>
             </div>
-            <textarea id="taskInput" placeholder="Describe the compliance goal or project parameters..." oninput="saveTaskToCookie()"></textarea>
+            <textarea id="taskInput" placeholder="What do you want to work on today?" oninput="saveTaskToCookie()"></textarea>
             
             <div class="image-box" onclick="document.getElementById('taskFile').click()">
-                <p style="color: var(--text-dim); font-size: 0.9rem;">Upload Identity Documents or Evidence</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Upload notes, photos, or anything you want to keep with your plan</p>
                 <input type="file" id="taskFile" hidden onchange="handleTaskImg(this)">
                 <img id="taskImgPreview" src="" style="max-height: 150px; display: none; margin: 20px auto; border-radius: 12px; border: 1px solid var(--card-border);">
             </div>
 
             <div style="display: flex; gap: 15px;">
-                <button class="action-btn" style="flex: 2;" onclick="generatePlan()">Generate AI Compliance Map</button>
-                <button class="sync-btn" style="flex: 1;" onclick="saveToGallery()">Sync to Vault</button>
+                <button class="action-btn" style="flex: 2;" onclick="generatePlan()">Generate AI Study Plan</button>
+                <button class="sync-btn" style="flex: 1;" onclick="saveToGallery()">Save to My List</button>
             </div>
 
             <div id="progressArea" style="display:none; margin-top:40px; padding-top: 30px; border-top: 1px solid var(--card-border);">
                 <div style="display:flex; justify-content:space-between; margin-bottom: 15px;">
-                    <span style="font-size: 0.85rem; font-weight: 600;">Audit Progress</span>
+                    <span style="font-size: 0.85rem; font-weight: 600;">Progress</span>
                     <span id="percentText" style="color: var(--accent-blue); font-weight: 800;">0%</span>
                 </div>
                 <div style="background:rgba(255,255,255,0.05); height:6px; border-radius:10px; overflow:hidden; margin-bottom: 25px;">
@@ -251,46 +251,46 @@
         </div>
 
         <div id="galleryView" class="view-pane">
-            <h1>Project Vault</h1>
+            <h1>My Saved Plans</h1>
             <div id="galleryList" class="gallery-grid"></div>
         </div>
 
         <div id="contactView" class="view-pane glass-panel">
-            <h1>Expert Support</h1>
+            <h1>Help & Support</h1>
             <table class="contact-table">
-                <tr><th>Assigned Officer</th><th>Secure Channel</th></tr>
+                <tr><th>Role</th><th>Contact</th></tr>
                 <tr><td>Project Manager</td><td>dj.azur3ofc@gmail.com</td></tr>
                 <tr><td>Co-Project Manager</td><td>31kabir.gagneja@cats-fc.org</td></tr>
-                <tr><td>Network Worker</td><td>31ankang.zhang@cats-fc.org</td></tr>
+                <tr><td>Support</td><td>31ankang.zhang@cats-fc.org</td></tr>
             </table>
         </div>
 
         <div id="profileView" class="view-pane glass-panel">
-            <h1>Security Credentials</h1>
+            <h1>Profile & Settings</h1>
             <div style="text-align:center; margin:30px;">
                 <img id="profilePicMain" style="width:90px; height:90px; border-radius:20px; object-fit:cover; border: 2px solid var(--card-border);">
-                <p onclick="document.getElementById('editPicIn').click()" style="color:var(--accent-blue); cursor:pointer; font-size: 0.8rem; margin-top: 15px;">Update ID Photo</p>
+                <p onclick="document.getElementById('editPicIn').click()" style="color:var(--accent-blue); cursor:pointer; font-size: 0.8rem; margin-top: 15px;">Update Photo</p>
                 <input type="file" id="editPicIn" hidden accept="image/*" onchange="updateProfilePic(this)">
             </div>
-            <input type="text" id="editUsername" class="auth-input" placeholder="Entity Name">
-            <input type="password" id="editPassword" class="auth-input" placeholder="Update Passphrase">
-            <button class="action-btn" style="width:100%; margin-top: 15px;" onclick="saveProfileChanges()">Commit Changes</button>
+            <input type="text" id="editUsername" class="auth-input" placeholder="Your name">
+            <input type="password" id="editPassword" class="auth-input" placeholder="New password (optional)">
+            <button class="action-btn" style="width:100%; margin-top: 15px;" onclick="saveProfileChanges()">Save Changes</button>
             
             <div style="margin-top: 50px; border-top: 1px solid var(--card-border); padding-top: 30px; text-align: center;">
-                <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 20px;">Session termination will encrypt local data cache.</p>
-                <button class="sync-btn" style="width:100%; border-color: var(--error); color: var(--error);" onclick="logout()">Terminate Session</button>
+                <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 20px;">Logging out clears your current session from this device.</p>
+                <button class="sync-btn" style="width:100%; border-color: var(--error); color: var(--error);" onclick="logout()">Log Out</button>
             </div>
         </div>
 
         <div id="gameView" class="view-pane">
-            <h1>Cognitive Stress Test</h1>
+            <h1>Quick Fun Mode</h1>
             <div class="glass-panel" style="padding: 2rem; margin-top: 20px; text-align: center;">
-                <h3>Throughput Counter</h3>
+                <h3>Click Challenge</h3>
                 <button class="action-btn" id="clickCounter" style="margin: 20px auto; font-size: 2rem; padding: 20px 50px;" onclick="this.innerText = parseInt(this.innerText)+1">0</button>
             </div>
             <div class="glass-panel" style="padding: 2rem; margin-top: 20px; text-align: center;">
-                <h3>Signal Matcher</h3>
-                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Synchronize the textual signal with visual output.</p>
+                <h3>Color Match</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">Match the word with the color you see.</p>
                 <div id="colorBoard" style="font-size: 2.5rem; font-weight: 800; margin: 20px 0; letter-spacing: 4px;">BLUE</div>
                 <div id="colorChoices" style="display: flex; gap: 15px; justify-content: center;">
                     <button class="sync-btn" onclick="checkColor(this)">Red</button>
