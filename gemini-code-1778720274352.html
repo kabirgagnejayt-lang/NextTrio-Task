@@ -70,10 +70,20 @@
             border-bottom: 1px solid var(--card-border);
         }
         .brand-logo { 
-            height: 56px; width: auto; cursor: pointer; filter: brightness(1.5);
-            transition: transform 0.3s ease;
+            width: 160px; height: auto; cursor: pointer;
+            filter: brightness(0.92) opacity(0.97);
+            background: rgba(255,255,255,0.08);
+            border-radius: 18px; padding: 10px; border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.35);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: floatLogo 3.2s ease-in-out infinite;
         }
-        .brand-logo:hover { transform: scale(1.05); }
+        .brand-logo:hover { transform: scale(1.08) translateY(-2px); filter: brightness(1); }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
 
         nav ul { list-style: none; display: flex; align-items: center; gap: 2rem; }
         nav a { 
