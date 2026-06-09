@@ -72,7 +72,7 @@
         .brand-logo {
             width: 150px; height: auto; cursor: pointer;
             display: block;
-            filter: brightness(0.98);
+            filter: brightness(0) invert(1);
             background: transparent;
             border-radius: 16px;
             padding: 0;
@@ -80,7 +80,7 @@
             box-shadow: none;
             transition: transform 0.18s ease, filter 0.18s ease;
         }
-        .brand-logo:hover { transform: scale(1.04); filter: brightness(1); }
+        .brand-logo:hover { transform: scale(1.04); filter: brightness(0) invert(1); }
 
         nav ul { list-style: none; display: flex; align-items: center; gap: 2rem; }
         nav a { 
@@ -205,7 +205,7 @@
     </div>
 
     <header id="mainHeader">
-        <img src="https://i.postimg.cc/cCQ69676/Chat-GPT-Image-May-28-2026-11-45-04-AM-removebg-preview.png" class="brand-logo" onclick="showView('app')">
+        <img src="https://i.postimg.cc/ydm33LRc/Chat-GPT-Image-Jun-3-2026-08-02-12-PM-removebg-preview.png" class="brand-logo" onclick="showView('app')">
         <nav>
             <ul>
                 <li><a onclick="showView('gallery')">My Projects</a></li>
